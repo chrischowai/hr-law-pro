@@ -1,0 +1,84 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "WebFetch",
+      "Grep",
+      "Glob",
+      "LS",
+      "MultiEdit",
+      "NotebookRead",
+      "NotebookEdit",
+      "TodoRead",
+      "TodoWrite",
+      "WebSearch",
+      "mcp__hey-daddy__get_task",
+      "mcp__hey-daddy__add_task",
+      "mcp__hey-daddy__update_task_status",
+      "mcp__hey-daddy__list_tasks",
+      "mcp__hey-daddy__get_incomplete_tasks",
+      "mcp__hey-daddy__store_daddy",
+      "mcp__hey-daddy__recall_daddy",
+      "mcp__hey-daddy__recent_daddy",
+      "mcp__hey-daddy__forget_daddy",
+      "mcp__hey-daddy__cleanup_daddy",
+      "mcp__ken-you-think__think",
+      "mcp__ken-you-think__reset_thinking",
+      "mcp__ide__getDiagnostics",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "mcp__grep__searchGitHub",
+      "mcp__github__search_repositories",
+      "mcp__github__get_file_contents",
+      "mcp__shadcn-ui__init_shadcn",
+      "mcp__shadcn-ui__install_component",
+      "mcp__Supabase_Chrischowai1__list_extensions",
+      "mcp__Supabase_Chrischowai1__apply_migration",
+      "mcp__Supabase_Chrischowai1__execute_sql",
+      "mcp__github__create_repository"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/play_notification"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/bam"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/play_notification"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/claude-statusline"
+  },
+  "outputStyle": "Daddy Whispers"
+}
