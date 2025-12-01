@@ -18,6 +18,16 @@ export default function SignupPage() {
     setIsLoading(true)
 
     try {
+      // Validate password confirmation
+      const password = formData.get('password') as string
+      const confirmPassword = formData.get('confirmPassword') as string
+
+      if (password !== confirmPassword) {
+        toast.error('Passwords do not match')
+        setIsLoading(false)
+        return
+      }
+
       const result = await signup(formData)
 
       if (result?.error) {
@@ -62,6 +72,16 @@ export default function SignupPage() {
                   name="password"
                   type="password"
                   placeholder="Enter your password"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Confirm your password"
                   required
                 />
               </div>
